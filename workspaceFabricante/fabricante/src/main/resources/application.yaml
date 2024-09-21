@@ -1,0 +1,27 @@
+app:
+ myport: ${PORT:0}
+
+spring:
+ application:
+  name: fabricante-service
+ datasource:
+   url: jdbc:h2:mem:fabricante
+   username: sa
+   password: 
+   driver-class-name: org.h2.Driver
+ h2:
+  console:
+   enabled: true
+ jpa:
+  database-platform: org.hibernate.dialect.H2Dialect
+  defer-datasource-initialization: true
+server:
+ port: ${app.myport}
+
+eureka:
+ instance:
+  instance-id: ${spring.application.name}:${random.value}
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8761/eureka/
+   

@@ -1,0 +1,65 @@
+app:
+ myport: ${PORT:0}
+
+spring:
+ application:
+  name: pessoa-service
+ datasource:
+   url: jdbc:h2:mem:pessoa
+   username: sa
+   password: 
+   driver-class-name: org.h2.Driver
+
+
+   
+ h2:
+  console:
+   enabled: true
+ jpa:
+  database-platform: org.hibernate.dialect.H2Dialect
+  defer-datasource-initialization: true
+server:
+ port: ${app.myport}
+
+eureka:
+ instance:
+  instance-id: ${spring.application.name}:${random.value}
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8761/eureka/
+   
+resilience4j.circuitbreaker:
+ instances:
+  pessoaService:
+    minimumNumberOfCalls: 5
+    slidingWindowSize: 10
+    failureRateThreshold: 50
+    slowCallDurationThreshold: 3s
+    waitDurationInOpenState: 6s
+ 
+resilience4j.retry:
+ instances:
+  pessoaServiceRetry:
+   maxAttempts: 3
+   waitDuration: 500ms
+   intervalFunction:
+    exponentialBackof:
+     multiplier: 2
+     maxInterval: 8s
+     
+springdoc:
+ show-actuator: true
+ api-docs:
+  path: /v3/api-docs
+ swagger-ui:
+  path: pessoa/swagger-ui.html
+  
+management:
+  tracing:
+    propagation:
+      type: w3c
+    sampling:
+      probability: 0.5
+  zipkin:
+      sender:
+        baseurl: http://localhost:9411/api/v2/spans  

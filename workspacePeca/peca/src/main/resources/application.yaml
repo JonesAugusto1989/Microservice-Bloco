@@ -1,0 +1,53 @@
+app:
+ myport: ${PORT:0}
+
+spring:
+ application:
+  name: peca-service
+ datasource:
+   url: jdbc:h2:mem:peca
+   username: sa
+   password: 
+   driver-class-name: org.h2.Driver
+ h2:
+  console:
+   enabled: true
+ jpa:
+  database-platform: org.hibernate.dialect.H2Dialect
+  defer-datasource-initialization: true
+server:
+ port: ${app.myport}
+
+eureka:
+ instance:
+  instance-id: ${spring.application.name}:${random.value}
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8761/eureka/
+resilience4j.circuitbreaker:
+ instances:
+  fabricanteFindByIdCircuitBreak:
+    minimumNumberOfCalls: 5
+    slidingWindowSize: 10
+    failureRateThreshold: 50
+    slowCallDurationThreshold: 3s
+    waitDurationInOpenState: 6s
+ 
+resilience4j.retry:
+ instances:
+  fabricanteFindByIdRetry:
+   maxAttempts: 3
+   waitDuration: 500ms
+   intervalFunction:
+    exponentialBackof:
+     multiplier: 2
+     maxInterval: 8s
+management:
+  tracing:
+   zipkin:
+    base-url: http://localhost:${app.myport}
+    propagation:
+      type: w3c
+    sampling:
+      probability: 0.5
+    endpoint: http://localhost:${app.myport}/api/v2/spans

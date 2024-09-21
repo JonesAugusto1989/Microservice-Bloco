@@ -1,0 +1,739 @@
+{
+	"info": {
+		"_postman_id": "14193dc5-15bb-4264-bd2c-d03f09e722ca",
+		"name": "Projeto Microservico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31401680"
+	},
+	"item": [
+		{
+			"name": "Pessoa",
+			"item": [
+				{
+					"name": "Incluir Pessoa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpfCnpj\":\"111.111.111-68\",\r\n    \"nome\": \"marta santos\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:57706/incluirPessoa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "57706",
+							"path": [
+								"incluirPessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarPessoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:56067/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56067",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarPessoasEncomendas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:59263/buscaPorId/518.307.090-38/Encomendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "59263",
+							"path": [
+								"buscaPorId",
+								"518.307.090-38",
+								"Encomendas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Encomendas",
+			"item": [
+				{
+					"name": "ListaTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:57601",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "57601"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incluir Encomenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpfCnpj\": \"518.307.090-38\",\r\n   \"listaDePecas\":[\r\n    {\"quantidade\":10,\"pecaId\":11},{\"quantidade\":10,\"pecaId\":2}\r\n   ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:59263/incluirEncomendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "59263",
+							"path": [
+								"incluirEncomendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarIncomenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:57601/buscaPorId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "57601",
+							"path": [
+								"buscaPorId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorCpf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:59263/buscarPorTodasCpfCnpj/518.307.090-38",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "59263",
+							"path": [
+								"buscarPorTodasCpfCnpj",
+								"518.307.090-38"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Peca",
+			"item": [
+				{
+					"name": "listaTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:50778",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "50778"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:56673/buscaPorId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56673",
+							"path": [
+								"buscaPorId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscaCompletaPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:56673/buscaPorId/1/Completo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56673",
+							"path": [
+								"buscaPorId",
+								"1",
+								"Completo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fabricante",
+			"item": [
+				{
+					"name": "BuscaPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:59882/buscaPorId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "59882",
+							"path": [
+								"buscaPorId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Encomendas",
+					"item": [
+						{
+							"name": "ListaTodos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/encomendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"encomendas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Incluir Encomenda",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpfCnpj\": \"518.307.090-38\",\r\n   \"listaDePecas\":[\r\n    {\"quantidade\":100,\"pecaId\":1},{\"quantidade\":10,\"pecaId\":2}\r\n   ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9098/encomendas/incluirEncomendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"encomendas",
+										"incluirEncomendas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarIncomenda",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/encomendas/buscaPorId/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"encomendas",
+										"buscaPorId",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "BuscarPorCpf",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/encomendas/buscarPorTodasCpfCnpj/518.307.090-38",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"encomendas",
+										"buscarPorTodasCpfCnpj",
+										"518.307.090-38"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pessoa",
+					"item": [
+						{
+							"name": "Incluir Pessoa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpfCnpj\":\"111.111.111-68\",\r\n    \"nome\": \"marta santos\",\r\n    \"dataNasc\":\"1958-08-21\",\r\n    \"endereco\": {\r\n            \"cep\":\"20551-050\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9098/pessoa/incluirPessoa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"pessoa",
+										"incluirPessoa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ListarPessoas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/pessoa/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"pessoa",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ListarPessoasEncomendas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/pessoa/buscaPorId/518.307.090-38/Encomendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"pessoa",
+										"buscaPorId",
+										"518.307.090-38",
+										"Encomendas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LimpaCache",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/pessoa/?cacheName=encomendas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"pessoa",
+										""
+									],
+									"query": [
+										{
+											"key": "cacheName",
+											"value": "encomendas"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "swagger",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/pessoa/swagger",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"pessoa",
+										"swagger"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ProcurarPorCpf",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/pessoa/buscaPorId/518.307.090-38",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"pessoa",
+										"buscaPorId",
+										"518.307.090-38"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AtualizarPessoa",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cpfCnpj\": \"518.307.090-38\",\r\n    \"nome\": \"Marta Santos\",\r\n    \"endereco\": {\r\n            \"cep\":\"20551-050\"\r\n\r\n\r\n    },\r\n    \"dataNasc\": \"1988-06-12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9098/pessoa/atualizar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"pessoa",
+										"atualizar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Peca",
+					"item": [
+						{
+							"name": "listaTodos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098"
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "buscarPorId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/peca/buscaPorId/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"peca",
+										"buscaPorId",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "BuscaCompletaPorId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/peca/buscaPorId/1/Completo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"peca",
+										"buscaPorId",
+										"1",
+										"Completo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Fabricante",
+					"item": [
+						{
+							"name": "BuscaPorId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9098/fabricante/buscaPorId/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9098",
+									"path": [
+										"fabricante",
+										"buscaPorId",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Quarkus",
+			"item": [
+				{
+					"name": "listarPessoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SalvarPessoa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"cpfCnpj\":\"111.111.111-70\",\r\n    \"nome\": \"Jones\",\r\n    \"dataNasc\" : \"1958-08-21\",\r\n    \"email\":\"jones@gmail.com\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscaPorCpfCnpj",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/111.111.111-70",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"111.111.111-70"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterarPessoa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"cpfCnpj\":\"111.111.111-70\",\r\n    \"nome\": \"JonesAtualizado\",\r\n    \"email\":\"jones@hotmail.com\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/111.111.111-70",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"111.111.111-70"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletarPessoa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/111.111.111-70",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"111.111.111-70"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
